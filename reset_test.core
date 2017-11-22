@@ -1,0 +1,28 @@
+CAPI=1
+
+[main]
+name = reset_test
+simulators = icarus isim modelsim xsim
+backend = vivado
+depend = vlog_tb_utils
+
+[fileset rtl]
+files =
+ rst_all.v
+ rst_bad.v
+ rst_good.v
+file_type = verilogSource
+
+[fileset tb]
+files = rst_tb.v[file_type=verilogSource]
+usage = sim
+
+[fileset synth]
+files = rst_wrap.v[file_type=verilogSource]
+usage = synth
+
+[simulator]
+toplevel = rst_tb
+
+[vivado]
+part = xc7k70tfbv676-1
